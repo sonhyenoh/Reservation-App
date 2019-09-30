@@ -19,6 +19,12 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".BossActivity"/>
+        <activity android:name=".CallActivity"/>
+        <activity android:name=".ConfirmActivity"/>
+        <activity android:name=".QRScanActivity"/>
+        <activity android:name=".SettingActivity"/>
+        <activity android:name=".WaitListActivity"/>
 
         <service
                 android:name=".MyFirebaseMessagingService"

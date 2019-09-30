@@ -2,10 +2,12 @@ package com.example.reservationapp
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
+import android.widget.Button
+import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.iid.FirebaseInstanceId
@@ -44,7 +46,18 @@ class MainActivity : AppCompatActivity() {
         }
         // [END handle_data_extras]
 
-        subscribeButton.setOnClickListener {
+        var buttonQR : ImageButton = findViewById(R.id.newActivity)
+        buttonQR.setBackgroundResource(R.drawable.hand)
+
+        var button_confirm : Button = findViewById(R.id.button_confirm)
+
+        buttonQR.setOnClickListener {
+            val intent : Intent = Intent(this, QRScanActivity::class.java)
+            startActivity(intent)
+        }
+
+        button_confirm.setOnClickListener {
+
             Log.d(TAG, "Subscribing to reservation topic")
             // [START subscribe_topics]
             FirebaseMessaging.getInstance().subscribeToTopic("reservation")
@@ -54,12 +67,10 @@ class MainActivity : AppCompatActivity() {
                         msg = getString(R.string.msg_subscribe_failed)
                     }
                     Log.d(TAG, msg)
-                    Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
+                    // Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
                 }
             // [END subscribe_topics]
-        }
 
-        logTokenButton.setOnClickListener {
             // Get token
             // [START retrieve_current_token]
             FirebaseInstanceId.getInstance().instanceId
@@ -75,16 +86,21 @@ class MainActivity : AppCompatActivity() {
                     // Log and toast
                     val msg = getString(R.string.msg_token_fmt, token)
                     Log.d(TAG, msg)
-                    Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
+                    // Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
                 })
             // [END retrieve_current_token]
+
+            val intent: Intent = Intent(this, ConfirmActivity::class.java)
+            startActivity(intent)
         }
 
-        Toast.makeText(this, "See README for setup instructions", Toast.LENGTH_SHORT).show()
+        button_bossActivity.setOnClickListener {
+            val intent: Intent = Intent(this, BossActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     companion object {
-
         private const val TAG = "MainActivity"
     }
 }

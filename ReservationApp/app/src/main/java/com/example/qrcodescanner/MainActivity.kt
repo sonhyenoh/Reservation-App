@@ -1,46 +1,38 @@
-package com.example.qrcodescanner
+package com.example.reservebossclient
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
+import android.widget.Button
 import kotlinx.android.synthetic.main.activity_main.*
-import com.google.zxing.integration.android.IntentIntegrator
+import android.view.View
+import android.content.Intent
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_main)
-        initFunc()
-    }
+        /*login.setOnClickListtener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }*/
 
-    private fun initFunc(){
-        //implement button action
-        btn_scan_me.setOnClickListener{
-            initScan()
-        }
-    }
-    
-    private fun initScan(){
-        IntentIntegrator(this).initiateScan()
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        val result = IntentIntegrator.parseActivityResult(requestCode,resultCode,data)
-        if(result !=null){
-            if(result.contents== null){
-                //the result data is null or empty then/
-                Toast.makeText(this,"this data is empty",Toast.LENGTH_LONG).show()
-            }else{
-                //this error because result maybe empty so use settext
-                et_value.setText(result.contents.toString())
+        Waitlistbutton.setOnClickListener{
+            val intent = Intent(this,BossActivity::class.java)
+            startActivity(intent)//다음화면으로 넘어가기
             }
-        }else {
-            //the camera will not close if the result is still null
-            super.onActivityResult(requestCode, resultCode, data)
+        Callbutton.setOnClickListener{
+            val intent =  Intent(this,CallActivity::class.java)
+            startActivity(intent)
+        }
+        Settingbutton.setOnClickListener{
+            val intent = Intent(this,SettingActivity::class.java)
+            startActivity(intent)
         }
         }
 
 
-}
+    }
+
+

@@ -95,7 +95,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         button_bossActivity.setOnClickListener {
-            val intent: Intent = Intent(this, BossActivity::class.java)
+            val intent: Intent = Intent(this, DatabaseTestActivity::class.java)
             startActivity(intent)
         }
     }

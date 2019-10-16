@@ -2,6 +2,7 @@ package com.example.reservationapp
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -49,8 +50,13 @@ class DatabaseTestActivity : AppCompatActivity() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
-                //val value = dataSnapshot.getValue(String::class.java)
-                //Log.d(TAG, "Value is: $value")
+
+                var str : String = "zxcv"
+                val value = dataSnapshot.child("Reservation Time").getValue(String::class.java)
+                if(value != null){
+                    Toast.makeText(this@DatabaseTestActivity,str,Toast.LENGTH_SHORT).show()
+                    Log.d(TAG, "Value is: $value")
+                }
             }
 
             override fun onCancelled(error: DatabaseError) {

@@ -17,33 +17,48 @@ class DatabaseTestActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_database_test)
 
+        var restaurantName = editText_resName.text.toString()
+        var userID = editText_userID.text.toString()
+
+        val database = FirebaseDatabase.getInstance()
+        val myRef = database.getReference(userID)
+
+        //val nameRef = myRef.child("Restaurant Name")
+
         button_DB_submit.setOnClickListener{
+
+            restaurantName = editText_resName.text.toString()
+            userID = editText_userID.text.toString()
 
             var now = System.currentTimeMillis()
             var date = Date(now)
             var sdfNow = SimpleDateFormat("yyyyMMddHHmmss")
             var formatDate : String = sdfNow.format(date)
 
-            val database = FirebaseDatabase.getInstance()
-            val myRef = database.getReference("message")
+            var reservationInformation = ReservationInformation(restaurantName,userID,formatDate)
 
-            myRef.setValue("Hello, world!")
-
-            // Read from the database
-            myRef.addValueEventListener(object : ValueEventListener {
-                override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    // This method is called once with the initial value and again
-                    // whenever data at this location is updated.
-                    val value = dataSnapshot.getValue(String::class.java)
-                    Log.d(TAG, "Value is: $value")
-                }
-
-                override fun onCancelled(error: DatabaseError) {
-                    // Failed to read value
-                    Log.w(TAG, "Failed to read value.", error.toException())
-                }
-            })
+            myRef.child("Restaurant Name").setValue(restaurantName)
+            myRef.child("Reservation Time").setValue(formatDate)
+            myRef.child("Reservation Information").setValue(reservationInformation)
         }
+
+
+
+        // Read from the database
+        myRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                //val value = dataSnapshot.getValue(String::class.java)
+                //Log.d(TAG, "Value is: $value")
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Failed to read value
+                Log.w(TAG, "Failed to read value.", error.toException())
+            }
+        })
+
     }
 
     companion object {

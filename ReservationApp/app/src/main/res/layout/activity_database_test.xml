@@ -33,7 +33,7 @@
                 app:layout_constraintRight_toRightOf="parent"
 
                 android:text="Text View User ID"
-                android:textSize="20dp"/>
+                android:textSize="10dp"/>
 
         <TextView
                 android:id="@+id/textView_resName"
@@ -43,7 +43,7 @@
                 app:layout_constraintRight_toRightOf="parent"
 
                 android:text="Text View Restaurant Name"
-                android:textSize="20dp"/>
+                android:textSize="10dp"/>
 
         <TextView
                 android:id="@+id/textView_resTime"
@@ -53,7 +53,7 @@
                 app:layout_constraintRight_toRightOf="parent"
 
                 android:text="Text View Reservation Time"
-                android:textSize="20dp"/>
+                android:textSize="10dp"/>
 
         <TextView
                 android:id="@+id/textView_waitNum"
@@ -63,7 +63,7 @@
                 app:layout_constraintRight_toRightOf="parent"
 
                 android:text="Text View Waiting Number"
-                android:textSize="20dp"/>
+                android:textSize="10dp"/>
 
         <Button
                 android:id="@+id/button_DB_submit"

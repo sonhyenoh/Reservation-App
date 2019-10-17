@@ -13,51 +13,75 @@ import java.util.*
 
 class DatabaseTestActivity : AppCompatActivity() {
 
+    val database = FirebaseDatabase.getInstance()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_database_test)
 
-        var userID = editText_userID.text.toString()
         var resName = editText_resName.text.toString()
-        var resTime = getTime()
-        var waitNum = "-1"
+        var userID  : String
+        var resTime : String
+        var waitNum = String
         var waitCount = 0
 
         var masterDbNum : Int
-        var myDbUserID : String
         var myDbResName : String
+        var myDbUserID : String
         var myDbResTime : String
         var myDbWaitNum : String
+        var myDbUserInfo : ReservationInformation
 
-        val database = FirebaseDatabase.getInstance()
-        val myRef = database.getReference(userID)
+        var myRef = database.getReference(resName)
+
+        Log.d("zxcv", "A")
 
         // QR 코드를 찍으면 실행되는 함수라고 가정한다.
         button_DB_submit.setOnClickListener{
-            userID = editText_userID.text.toString()
             resName = editText_resName.text.toString()
+            userID = editText_userID.text.toString()
             resTime = getTime()
 
-            myRef.child("User ID").setValue(userID)
-            myRef.child("Restaurant Name").setValue(resName)
-            myRef.child("Reservation Time").setValue(resTime)
-            myRef.child("Waiting Number").setValue(waitNum)
+            Log.d("zxcv", "B")
+
+            myRef = database.getReference(resName)
+
+            Log.d("zxcv", "C")
+
+            val userInfo = ReservationInformation(resName, userID, resTime, -1)
+
+//            myRef.child("User ID").setValue(userID)
+//            myRef.child("Restaurant Name").setValue(resName)
+//            myRef.child("Reservation Time").setValue(resTime)
+//            myRef.child("Waiting Number").setValue(waitNum)
+            myRef.child(userID).setValue(userInfo)
+            Log.d("zxcv", "D")
         }
 
 
 
         myRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                myDbUserID = dataSnapshot.child("User ID").getValue(String::class.java)?:""
-                myDbResName = dataSnapshot.child("Restaurant Name").getValue(String::class.java)?:"Restaurant Name"
-                myDbResTime = dataSnapshot.child("Reservation Time").getValue(String::class.java)?:"00000000000000"
-                myDbWaitNum = dataSnapshot.child("Waiting Number").getValue(String::class.java)?:"-1"
+                userID = editText_userID.text.toString()
+                Log.d("zxcv", "E")
+//                myDbUserID = dataSnapshot.child("User ID").getValue(String::class.java)?:"X"
+//                myDbResName = dataSnapshot.child("Restaurant Name").getValue(String::class.java)?:"Restaurant Name"
+//                myDbResTime = dataSnapshot.child("Reservation Time").getValue(String::class.java)?:"00000000000000"
+//                myDbWaitNum = dataSnapshot.child("Waiting Number").getValue(String::class.java)?:"-1"
 
-                textView_userID.text = myDbUserID
-                textView_resName.text = myDbResName
-                textView_resTime.text = myDbResTime
-                textView_waitNum.text = myDbWaitNum
+                // 여기서 에러
+                myDbUserInfo = dataSnapshot.child(userID).getValue(ReservationInformation::class.java)?:ReservationInformation("X", "Res Name", "00000000000000", -1)
 
+                myDbUserInfo = dataSnapshot.child(userID).getValue("")
+                Log.d("zxcv", "F")
+                myRef = database.getReference(userID)
+
+                Log.d("zxcv", "G")
+//                textView_userID.text = myDbUserID
+//                textView_resName.text = myDbResName
+//                textView_resTime.text = myDbResTime
+                textView_waitNum.text = myDbUserInfo.toString()
+                Log.d("zxcv", "H")
             }
 
             override fun onCancelled(error: DatabaseError) {

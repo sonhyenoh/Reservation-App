@@ -2,7 +2,6 @@ package com.example.reservationapp
 
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -18,52 +17,62 @@ class DatabaseTestActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_database_test)
 
-        var restaurantName = editText_resName.text.toString()
         var userID = editText_userID.text.toString()
+        var resName = editText_resName.text.toString()
+        var resTime = getTime()
+        var waitNum = "-1"
+        var waitCount = 0
+
+        var masterDbNum : Int
+        var myDbUserID : String
+        var myDbResName : String
+        var myDbResTime : String
+        var myDbWaitNum : String
 
         val database = FirebaseDatabase.getInstance()
         val myRef = database.getReference(userID)
 
-        //val nameRef = myRef.child("Restaurant Name")
-
+        // QR 코드를 찍으면 실행되는 함수라고 가정한다.
         button_DB_submit.setOnClickListener{
-
-            restaurantName = editText_resName.text.toString()
             userID = editText_userID.text.toString()
+            resName = editText_resName.text.toString()
+            resTime = getTime()
 
-            var now = System.currentTimeMillis()
-            var date = Date(now)
-            var sdfNow = SimpleDateFormat("yyyyMMddHHmmss")
-            var formatDate : String = sdfNow.format(date)
-
-            var reservationInformation = ReservationInformation(restaurantName,userID,formatDate)
-
-            myRef.child("Restaurant Name").setValue(restaurantName)
-            myRef.child("Reservation Time").setValue(formatDate)
-            myRef.child("Reservation Information").setValue(reservationInformation)
+            myRef.child("User ID").setValue(userID)
+            myRef.child("Restaurant Name").setValue(resName)
+            myRef.child("Reservation Time").setValue(resTime)
+            myRef.child("Waiting Number").setValue(waitNum)
         }
 
 
 
-        // Read from the database
         myRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
+                myDbUserID = dataSnapshot.child("User ID").getValue(String::class.java)?:""
+                myDbResName = dataSnapshot.child("Restaurant Name").getValue(String::class.java)?:"Restaurant Name"
+                myDbResTime = dataSnapshot.child("Reservation Time").getValue(String::class.java)?:"00000000000000"
+                myDbWaitNum = dataSnapshot.child("Waiting Number").getValue(String::class.java)?:"-1"
 
-                var str : String = "zxcv"
-                val value = dataSnapshot.child("Reservation Time").getValue(String::class.java)
-                if(value != null){
-                    Toast.makeText(this@DatabaseTestActivity,str,Toast.LENGTH_SHORT).show()
-                    Log.d(TAG, "Value is: $value")
-                }
+                textView_userID.text = myDbUserID
+                textView_resName.text = myDbResName
+                textView_resTime.text = myDbResTime
+                textView_waitNum.text = myDbWaitNum
+
             }
 
             override fun onCancelled(error: DatabaseError) {
                 // Failed to read value
-                Log.w(TAG, "Failed to read value.", error.toException())
+                Log.w("zxcv", "Failed to read value.", error.toException())
             }
         })
+
+    }
+
+    private fun getTime() : String{
+        return SimpleDateFormat("yyyyMMddHHmmss").format(Date(System.currentTimeMillis()))
+    }
+
+    fun regReservation(){
 
     }
 

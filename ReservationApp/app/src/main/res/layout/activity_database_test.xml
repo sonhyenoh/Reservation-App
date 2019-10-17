@@ -5,40 +5,76 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <EditText
-            android:id="@+id/editText_resName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/editText_userID"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
+        <EditText
+                android:id="@+id/editText_userID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
 
-            android:hint="Restaurant Name"
-            android:text="Blue Pot in KAU"/>
+                android:hint="User ID"
+                android:text="User ID"/>
 
-    <EditText
-            android:id="@+id/editText_userID"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
+        <EditText
+                android:id="@+id/editText_resName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/editText_userID"
+                app:layout_constraintLeft_toLeftOf="parent"
 
-            android:hint="User ID"
-            android:text="User ID"/>
+                android:hint="Restaurant Name"
+                android:text="Blue Pot in KAU"/>
 
-    <Button
-            android:id="@+id/button_DB_submit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/editText_userID"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
+        <TextView
+                android:id="@+id/textView_userID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
 
-            android:text="Submit"/>
+                android:text="Text View User ID"
+                android:textSize="20dp"/>
+
+        <TextView
+                android:id="@+id/textView_resName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/textView_userID"
+                app:layout_constraintRight_toRightOf="parent"
+
+                android:text="Text View Restaurant Name"
+                android:textSize="20dp"/>
+
+        <TextView
+                android:id="@+id/textView_resTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/textView_resName"
+                app:layout_constraintRight_toRightOf="parent"
+
+                android:text="Text View Reservation Time"
+                android:textSize="20dp"/>
+
+        <TextView
+                android:id="@+id/textView_waitNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/textView_resTime"
+                app:layout_constraintRight_toRightOf="parent"
+
+                android:text="Text View Waiting Number"
+                android:textSize="20dp"/>
+
+        <Button
+                android:id="@+id/button_DB_submit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/editText_userID"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+
+                android:text="Submit"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

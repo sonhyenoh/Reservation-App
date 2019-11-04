@@ -1,12 +1,9 @@
-package com.example.qreservationapp
+package com.example.qrcodereservationapp
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
-//import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
-import android.util.Log
 
 class LoginActivity : AppCompatActivity() {
 
@@ -14,12 +11,11 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        button_loginActLogin.setOnClickListener {
-
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+        button_loginActLogin.setOnClickListener{
+            val intent = Intent(this,MainActivity::class.java)
+            intent.putExtra("Id","ok7624583")
+            startActivityForResult(intent,1)
             finish()
         }
-
     }
 }

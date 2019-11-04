@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Q.R.V</string>
+    <string-array name="store_array">
+        <item>동대문엽기떡볶이 일산점</item>
+        <item>동대문엽기떡볶이 홍대점</item>
+        <item>동대문엽기떡볶이 이대점</item>
+        <item>동대문엽기떡볶이 수색점</item>
+        <item>동대문엽기떡볶이 고양행신점</item>
+    </string-array>
+</resources>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    >
+
+
+    <Button
+        android:id="@+id/bt_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="로그인 하기"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_explain2"
+        tools:layout_constraintRight_toRightOf="parent" />
+
+    <Button
+        android:id="@+id/bt_reservation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="QR코드 찍기"
+        app:layout_constraintBottom_toTopOf="@id/text_explain2"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_explain" />
+
+    <TextView
+        android:id="@+id/text_explain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="QR코드를 찍으시면 언제 오실지,                제가 알려드려요."
+        android:textSize="30dp"
+        app:layout_constraintBottom_toTopOf="@id/bt_reservation"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_title" />
+
+    <TextView
+        android:id="@+id/text_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="QReservation"
+        android:textSize="55dp"
+        app:layout_constraintBottom_toTopOf="@id/text_explain"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_explain2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="로그인을 안 하셨다면,
+         먼저 로그인을 해주세요."
+        android:textSize="30dp"
+        app:layout_constraintBottom_toTopOf="@id/bt_login"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bt_reservation" />
+
+    <TextView
+        android:id="@+id/text_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="사용자 정보 없음"
+        app:layout_constraintBottom_toTopOf="@id/text_title"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity"
+    android:background="@drawable/background"
+   >
+
+
+    <TextView
+        android:id="@+id/textView_loginActTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="240dp"
+        android:text="로그인"
+        android:textSize="15dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_loginActID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/textView_loginActTitle"
+        app:layout_constraintLeft_toLeftOf="@id/editText_loginActID"
+        android:layout_marginTop="30dp"
+
+        android:text="이메일"
+        android:textSize="10dp"/>
+
+    <EditText
+        android:id="@+id/editText_loginActID"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="E-mail"
+        android:inputType="textEmailAddress"
+
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView_loginActID" />
+
+    <TextView
+        android:id="@+id/textView_loginActPW"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="12dp"
+        android:text="비밀번호"
+
+        android:textSize="10dp"
+        app:layout_constraintLeft_toLeftOf="@id/editText_loginActPW"
+        app:layout_constraintTop_toBottomOf="@id/editText_loginActID" />
+
+    <EditText
+        android:id="@+id/editText_loginActPW"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="Password"
+        android:inputType="textPassword"
+
+        app:layout_constraintHorizontal_bias="0.453"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView_loginActPW" />
+
+    <Button
+        android:id="@+id/button_loginActLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="로그인"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editText_loginActPW" />
+
+    <Button
+        android:id="@+id/button_loginActSignUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="회원가입"
+        android:textSize="10dp"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/button_loginActForgotPW"
+        app:layout_constraintTop_toBottomOf="@id/button_loginActLogin" />
+
+    <Button
+        android:id="@+id/button_loginActForgotPW"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="비밀번호 찾기 / 기능 구현 계획 아직 없음"
+        android:textSize="10dp"
+        app:layout_constraintBaseline_toBaselineOf="@id/button_loginActSignUp"
+        app:layout_constraintLeft_toRightOf="@id/button_loginActSignUp"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:id="@+id/text_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="QReservation"
+        android:textSize="50dp"
+        app:layout_constraintBottom_toTopOf="@id/textView_loginActTitle"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Space
+        android:id="@+id/bottomspace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_loginActSignUp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,16 +3,17 @@ package com.example.reservationapp
 import android.os.Parcel
 import android.os.Parcelable
 
-class OptionList(var optionname: String?) : Parcelable {
-    //일단은 소포화 할필요없어졌는데 그냥 내비둠 마무리때도 필요없으면 parceable지우기
+class OptionList(var optionname: String?, var Callnumber: Int = 0) : Parcelable{
     constructor(source: Parcel) : this(
-        source.readString()
+    source.readString(),
+    source.readInt()
     )
 
     override fun describeContents() = 0
 
     override fun writeToParcel(dest: Parcel, flags: Int) = with(dest) {
         writeString(optionname)
+        writeInt(Callnumber)
     }
 
     companion object {

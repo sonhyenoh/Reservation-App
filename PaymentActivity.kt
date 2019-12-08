@@ -23,10 +23,11 @@ import kr.co.bootpay.listener.ReadyListener
 import kr.co.bootpay.model.BootExtra
 import kr.co.bootpay.model.BootUser
 
-
 class PaymentActivity : AppCompatActivity() {
     private lateinit var webView: WebView
     private val stuck = 10
+    val price : Int by lazy{intent.extras?.get("price").toString().toInt()}
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_payment)
@@ -54,7 +55,7 @@ class PaymentActivity : AppCompatActivity() {
 //                .setUserPhone("010-1234-5678") // 구매자 전화번호
             .setName("storename") // 결제할 상품명
             .setOrderId("1234") // 결제 고유번호expire_month
-            .setPrice(10000) // 결제할 금액
+            .setPrice(price) // 결제할 금액
 
             .onDone( DoneListener() { // 결제완료시 호출, 아이템 지급 등 데이터 동기화 로직을 수행합니다
                 fun onDone(@Nullable message :String) {

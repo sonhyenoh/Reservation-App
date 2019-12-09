@@ -1,17 +1,16 @@
-package com.example.qreservationapp
+package com.example.reservationapp
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 
-class SplashActivity : AppCompatActivity() {
-
+class SplashActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
-        val intent = Intent(this, MainActivity::class.java)            // 실제 사용할 메인 액티비티
+        
+        val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
         finish()
     }
 }
-

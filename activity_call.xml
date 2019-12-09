@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CallActivity"
-    android:background="@drawable/menubackground2"
+    android:background="@color/mainBackground"
     android:orientation="vertical">
 
     <TextView
@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="낙원돈까스"
-        android:textColor="@color/black"
+        android:textColor="@color/colorPrimaryOrange"
         android:textSize="40dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/space_2"
@@ -81,8 +81,10 @@
 
         <ListView
             android:id="@+id/list_call"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="400dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="30dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -98,7 +100,7 @@
         android:layout_height="wrap_content"
         android:text="총 :"
         android:textStyle="bold"
-        android:textColor="@color/black"
+        android:textColor="@color/colorPrimary"
         android:textSize="23dp"
         app:layout_constraintBottom_toTopOf="@id/bt_callham"
         app:layout_constraintLeft_toLeftOf="parent" />
@@ -109,7 +111,7 @@
         android:layout_height="wrap_content"
         android:text="0"
         android:textStyle="bold"
-        android:textColor="@color/black"
+        android:textColor="@color/colorPrimary"
         android:textSize="23dp"
         app:layout_constraintBottom_toTopOf="@id/bt_callham"
         app:layout_constraintLeft_toRightOf="@id/text_총" />
@@ -120,7 +122,7 @@
         android:layout_height="wrap_content"
         android:text="원"
         android:textStyle="bold"
-        android:textColor="@color/black"
+        android:textColor="@color/colorPrimary"
         android:textSize="23dp"
         app:layout_constraintBottom_toTopOf="@id/bt_callham"
         app:layout_constraintLeft_toRightOf="@id/text_all" />
